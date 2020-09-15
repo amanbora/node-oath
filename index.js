@@ -4,14 +4,11 @@ const express = require('express')
 // Import the axios library, to make HTTP requests
 const axios = require('axios')
 
-// This is the client ID and client secret that you obtained
-// while registering the application
+//github credentials
 const clientID = '<your client id>'
 const clientSecret = '<your client secret>'
 
-// Create a new express application and use
-// the express static middleware, to serve all files
-// inside the public directory
+
 const app = express()
 app.use(express.static(__dirname + '/public'))
 
@@ -20,7 +17,6 @@ app.get('/oauth/redirect', (req, res) => {
   // were sent to this route. We want the `code` param
   const requestToken = req.query.code
   axios({
-    // make a POST request
     method: 'post',
     // to the Github authentication API, with the client ID, client secret
     // and request token
